@@ -20,10 +20,10 @@ enum Action {
 
 fn setup(mut input: ResMut<InputMap<Action>>){
     #[cfg(feature = "serialize")]
-    if let Err(_) = load_from_path(&mut input, "keybindings.config") {
-        {   println!("no keybind config found creating default setup"); //just to show the path it took
-            create_default_keybindings(&mut input);
-            save_to_path(&input,"keybindings.config").unwrap()}
+    if let Err(_) = load_from_path(&mut input, "keybindings.ron") {
+        println!("no keybind config found creating default setup"); //just to show the path it took
+        create_default_keybindings(&mut input);
+        save_to_path(&input,"keybindings.ron").unwrap()
     } else {//if it loaded custom keybinds dont add new ones
         println!("keybindings loaded from local file") //just to show the path it took
     }

@@ -249,8 +249,8 @@ where
         if !self.actions.contains_key(&key) {
             self.add_action(key.clone());
         }
-        if let Some(actions) = self.actions.get_mut(&key) {
-            actions.bindings.push(binding.into());
+        if let Some(action) = self.actions.get_mut(&key) {
+            action.bindings.push(binding.into());
         }
         self
     }
